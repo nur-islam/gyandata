@@ -137,7 +137,7 @@
 												</p>
 												<br>
 												<p class="glyphicon glyphicon glyphicon-envelope">
-													&nbsp;<b>Contact</b> <%=user.getEmail()%>
+													&nbsp;<b>Email</b> <%=user.getEmail()%>
 												</p>
 												<br>
 												<p class="glyphicon glyphicon glyphicon-phone">

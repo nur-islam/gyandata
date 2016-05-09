@@ -23,7 +23,7 @@ public class GyanpediaDao extends BaseDao{
 			.append("AND user_details_password=?");
 	
 	private final StringBuffer INSERT_USER = new StringBuffer()
-			.append("Insert into gyanpedia.user_details values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+			.append("Insert into gyanpedia.user_details values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,SYSDATE()) ");
 	
 	private final StringBuffer INSERT_USER_POST = new StringBuffer()
 			.append("Insert into gyanpedia.user_content (user_details_id, user_content_details, user_content_created_on) values(?,?,SYSDATE())");
@@ -60,6 +60,7 @@ public class GyanpediaDao extends BaseDao{
 				user.setName(resultSet.getString("user_details_name"));
 				user.setOrganization(resultSet.getString("user_details_organization"));
 				user.setRole(resultSet.getString("user_details_role"));
+				user.setBirthDate(resultSet.getDate("user_details_birthdate"));
 				user.setPassword(resultSet.getString("user_details_password"));
 				user.setPhone(resultSet.getInt("user_details_phone"));
 				user.setStreet(resultSet.getString("user_details_street"));
