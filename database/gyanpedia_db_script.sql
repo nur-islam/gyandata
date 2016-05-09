@@ -19,13 +19,16 @@ CREATE TABLE `user_details` (
 	`user_details_stream` VARCHAR(100) NULL DEFAULT NULL,
 	`user_details_nationality` VARCHAR(100) NULL DEFAULT NULL,
 	`user_details_gender` VARCHAR(6) NULL DEFAULT NULL,
+	`user_details_image` VARCHAR(100) NULL DEFAULT 'img/user.png',
 	`user_details_created_on` DATE NULL DEFAULT NULL,
 	PRIMARY KEY (`user_details_id`)
 )
 COLLATE='latin1_swedish_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=2
+AUTO_INCREMENT=5
 ;
+
+
 
 
 CREATE TABLE user_content (

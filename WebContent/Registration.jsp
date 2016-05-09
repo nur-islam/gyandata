@@ -88,10 +88,9 @@
 	<h1>Registration</h1>
 	</section>
 	<!--/#error-->
-
+<%if(session.getAttribute("msg") != null) {%>
 <%=session.getAttribute("msg") %>
-
-
+<%} %>
 
 	<section id="feature">
 	<div class="container">
@@ -745,13 +744,9 @@
 							<br />Picture&nbsp
 						</legend>
 						<input type="hidden" id="uploadImageValue" name="uploadImageValue"
-							value="" /> <img id="uploadPreview" src=k.jpg width="300"
+							value="" /> <img id="uploadPreview" src=img/user.png width="300"
 							height="300" /> <br /> <br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<input id="uploadImage" type="file"
-							accept="image/jpeg,image/gif, image/png" name="myPhoto"
-							onchange="PreviewImage();" /> <br />
-						<h3>
-							Upload SQUARE SHAPE IMAGE otherwise it looks odd.....
+						<a style="font-size: 20px;" class="glyphicon glyphicon-camera upload-comment-file">&nbsp;Upload image</a>
 							<h3>
 
 

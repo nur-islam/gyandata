@@ -23,7 +23,7 @@ public class GyanpediaDao extends BaseDao{
 			.append("AND user_details_password=?");
 	
 	private final StringBuffer INSERT_USER = new StringBuffer()
-			.append("Insert into gyanpedia.user_details values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,SYSDATE()) ");
+			.append("Insert into gyanpedia.user_details values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,SYSDATE()) ");
 	
 	private final StringBuffer INSERT_USER_POST = new StringBuffer()
 			.append("Insert into gyanpedia.user_content (user_details_id, user_content_details, user_content_created_on) values(?,?,SYSDATE())");
@@ -72,6 +72,7 @@ public class GyanpediaDao extends BaseDao{
 				user.setStream(resultSet.getString("user_details_stream"));
 				user.setNationality(resultSet.getString("user_details_nationality"));
 				user.setGender(resultSet.getString("user_details_gender"));
+				user.setImage(resultSet.getString("user_details_image"));
 			
 			}
 			//user = populateBean(resultSet, User.class);			
@@ -184,6 +185,7 @@ public class GyanpediaDao extends BaseDao{
 			preparedStatement.setString(placeHolder++, user.getStream());
 			preparedStatement.setString(placeHolder++, user.getNationality());
 			preparedStatement.setString(placeHolder++, user.getGender());
+			preparedStatement.setString(placeHolder++, user.getImage());
 
 			LOGGER.info(preparedStatement.toString());
 			isSuccess = preparedStatement.executeUpdate() > 0 ? true : false;

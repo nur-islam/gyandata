@@ -52,6 +52,9 @@ public class UploadDownloadFileServlet extends HttpServlet {
 	protected void doPerform(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 		DiskFileItemFactory fileFactory = new DiskFileItemFactory();
 		File filesDir = new File(Constant.FILE_UPLOAD_LOCATION);
+		if(!filesDir.exists()){
+			filesDir.mkdirs();
+		}
 		fileFactory.setRepository(filesDir);
 		this.uploader = new ServletFileUpload(fileFactory);
 		
@@ -124,13 +127,12 @@ public class UploadDownloadFileServlet extends HttpServlet {
 				request.setAttribute("uploadData", "<a id=\"download-link\" href=\"uploaddownloadcontroller?action=downloadFile&fileName="+fileNewName+"\">Download "+fileItem.getName()+"</a>");
 				request.setAttribute("editorId",getOtherData(fileItemsList, "editorId"));
 				/*out.write("File "+fileItem.getName()+ " uploaded successfully.");
-				out.write("<br>");
+				out.write("<br>");*/
 				if(fileItem.getContentType().contains("image")){
-					out.write("<img src=\""+file.getPath()+"\">");
+					request.setAttribute("uploadData", "<img src=\"upload/"+file.getName()+"\">");
 				} else {
-					out.write("<a id=\"download-link\" href=\"uploaddownloadcontroller?action=downloadFile&fileName="+fileNewName+"\">Download "+fileItem.getName()+"</a>");
-					out.write("<button id=\"uploadData\">Insert Data</button>");
-				}*/
+					request.setAttribute("uploadData", "<a id=\"download-link\" href=\"uploaddownloadcontroller?action=downloadFile&fileName="+fileNewName+"\">Download "+fileItem.getName()+"</a>");
+				}
 				request.getRequestDispatcher("imageEditorPopup.jsp").forward(request, response);
 				//response.sendRedirect("imageEditorPopup.jsp");
 			}

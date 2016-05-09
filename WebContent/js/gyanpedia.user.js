@@ -31,10 +31,20 @@ $("document").ready(function() {
 			country :$('#country').val(),
 			stream :$('#stream').val(),
 			nationality :$('#nationality').val(),
-			gender :$('#gender').val()
+			gender :$('#gender').val(),
+			userImage: $('#uploadImageValue').val()
 		};
 		$.post('./gyanpediacontroller?action=register', postData, function(data, status){
 			
 		});
+	});
+	
+	$('body').on('click', '.upload-comment-file', function(e) {
+		e.preventDefault();
+		
+		var windowFeatures = "height=400,width=600,status=yes,toolbar=no,menubar=no,location=no,scrollbars=yes",
+		windowName = "imageUpload",
+		editorId = 'register';
+		window.open("./imageEditorPopup.jsp?editorId="+editorId, windowName, windowFeatures);
 	});
 });

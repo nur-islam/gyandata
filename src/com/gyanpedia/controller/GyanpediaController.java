@@ -50,7 +50,6 @@ public class GyanpediaController extends HttpServlet {
 		if (Constant.METHOD_LOGIN.equalsIgnoreCase(action)) {
 			performLogin(req, resp);
 		} else if (Constant.METHOD_REGISTER.equalsIgnoreCase(action)) {
-			checkSessionExists(req, resp);
 			performRegister(req, resp);
 		} else if (Constant.METHOD_SHOW_USER.equalsIgnoreCase(action)) {
 			checkSessionExists(req, resp);
@@ -119,7 +118,8 @@ public class GyanpediaController extends HttpServlet {
 		user.setStream(req.getParameter("stream"));
 		user.setNationality(req.getParameter("nationality"));
 		user.setGender(req.getParameter("gender"));
-		String date = req.getParameter("birthdate");
+		user.setImage(req.getParameter("userImage"));
+		String date = req.getParameter("birthdate");		
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 		Date parse = null;

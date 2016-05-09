@@ -20,6 +20,7 @@ public class User {
 	private String stream;
 	private String nationality;
 	private String gender;
+	private String image;
 	private List<PostContent> postContents;
 	/**
 	 * @return the userid
@@ -236,6 +237,12 @@ public class User {
 				+ ", city=" + city + ", state=" + state + ", pincode=" + pincode + ", country=" + country + ", email="
 				+ email + ", stream=" + stream + ", nationality=" + nationality + ", gender=" + gender
 				+ ", postContents=" + postContents + "]";
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 	

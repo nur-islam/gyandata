@@ -104,7 +104,7 @@
 											<h4><%out.print(user.getName());%>&nbsp;<span class="lead"></span></h4>
 										</div>
 										<div style="text-align: center;" class="panel-thumbnail">
-											<img width="250" height="250" border="2" src="img/user.png">
+											<img width="250" height="250" border="2" src="<%= user.getImage()%>">
 										</div>
 										<br>
 									</div>

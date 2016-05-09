@@ -11,15 +11,22 @@ $("document").ready(function() {
 	function insertData() {
 		var uploadContent = $('#uploadContent').html(),
 			ckEditorId = $('#editorId').val();
-		if (window.opener.CKEDITOR.instances[''+ckEditorId]) {
-			uploadContent = window.opener.CKEDITOR.instances[''+ckEditorId].getData()
-					+ uploadContent;
-			window.opener.CKEDITOR.instances[''+ckEditorId]
-					.setData(uploadContent);
+		if(ckEditorId == 'register'){
+			var img = $.parseHTML(uploadContent);
+			window.opener.$('#uploadPreview').attr('src',img[0].attributes.src.value);
+			window.opener.$('#uploadImageValue').val(img[0].attributes.src.value);
+			
 		} else {
-			window.opener.CKEDITOR.replace(''+ckEditorId);
-			window.opener.CKEDITOR.instances[''+ckEditorId]
-					.setData(uploadContent);
+			if (window.opener.CKEDITOR.instances[''+ckEditorId]) {
+				uploadContent = window.opener.CKEDITOR.instances[''+ckEditorId].getData()
+						+ uploadContent;
+				window.opener.CKEDITOR.instances[''+ckEditorId]
+						.setData(uploadContent);
+			} else {
+				window.opener.CKEDITOR.replace(''+ckEditorId);
+				window.opener.CKEDITOR.instances[''+ckEditorId]
+						.setData(uploadContent);
+			}
 		}
 
 		window.close($('#download-link').html());
@@ -53,8 +60,6 @@ $("document").ready(function() {
 	</form>
 	<%
 		}
-	%>
-	<%=editorId%>
-	
+	%>	
 </body>
 </html>
