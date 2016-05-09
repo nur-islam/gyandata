@@ -106,6 +106,7 @@ public class GyanpediaDao extends BaseDao{
 				content.setContent(resultSet.getString("user_content_details"));
 				content.setCreatedOn(resultSet.getString("user_content_created_on"));
 				content.setCreatedBy(resultSet.getString("user_details_name"));
+				content.setCreatedImage(resultSet.getString("user_details_image"));
 				content.setContentId(resultSet.getInt("user_content_id"));
 				contents.add(content);
 			}
@@ -143,6 +144,7 @@ public class GyanpediaDao extends BaseDao{
 				reply.setContentId(resultSet.getInt("user_content_id"));
 				reply.setCreatedOn(resultSet.getString("user_content_reply_created_on"));
 				reply.setCreatedBy(resultSet.getString("user_details_name"));
+				reply.setCreatedImage(resultSet.getString("user_details_image"));
 				reply.setReplyContent(resultSet.getString("user_content_reply_details"));
 				replies.add(reply);
 			

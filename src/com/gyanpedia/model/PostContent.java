@@ -9,6 +9,7 @@ public class PostContent {
 	private String createdOn;
 	private String createdBy;
 	private int contentId;
+	private String createdImage;
 	private List<ContentReply> contentReplies;
 	/**
 	 * @return the userid
@@ -89,6 +90,12 @@ public class PostContent {
 	public String toString() {
 		return "PostContent [userid=" + userid + ", content=" + content + ", createdOn=" + createdOn + ", createdBy="
 				+ createdBy + ", contentId=" + contentId + ", contentReplies=" + contentReplies + "]";
+	}
+	public String getCreatedImage() {
+		return createdImage;
+	}
+	public void setCreatedImage(String createdImage) {
+		this.createdImage = createdImage;
 	}
 
 	

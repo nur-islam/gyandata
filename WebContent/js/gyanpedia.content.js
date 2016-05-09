@@ -84,7 +84,7 @@ function populateConetnt(resultData){
 					'<form class="form">'+
 				'<div class="user-info">'+
 					'<div style="float: left;" class="user-img">'+
-						'<img width="50" height="50" src="img/user.png">'+
+						'<img width="50" height="50" src="'+comment.createdImage+'">'+
 					'</div>'+
 					'<div style="margin-left: 55px;" class="info">'+
 						'<h4>'+comment.createdBy+'</h4>'+
@@ -96,7 +96,7 @@ function populateConetnt(resultData){
 		//if(comment.contentReplies.length > 0){
 			$.each( comment.contentReplies, function( replyIndex, contentReply ){
 				repyData = repyData + '<hr><div style="float: left;" class="user-reply-img">'+
-				'<img width="20" height="20" src="img/user.png">'+
+				'<img width="20" height="20" src="'+comment.createdImage+'">'+
 				'</div>'+
 				'&nbsp;replyed on '+contentReply.createdOn+'<div class="comment-'+replyIndex+'-reply-'+replyIndex+'">'+contentReply.replyContent+'</div>'+
 				'';

@@ -7,6 +7,7 @@ public class ContentReply {
 	private String createdBy;
 	private String replyContent;
 	private String createdOn;
+	private String createdImage;
 	/**
 	 * @return the replyId
 	 */
@@ -86,6 +87,12 @@ public class ContentReply {
 	public String toString() {
 		return "ContentReply [replyId=" + replyId + ", userid=" + userid + ", contentId=" + contentId + ", createdBy="
 				+ createdBy + ", replyContent=" + replyContent + ", createdOn=" + createdOn + "]";
+	}
+	public String getCreatedImage() {
+		return createdImage;
+	}
+	public void setCreatedImage(String createdImage) {
+		this.createdImage = createdImage;
 	}
 	
 }
