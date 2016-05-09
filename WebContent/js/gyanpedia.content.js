@@ -38,7 +38,7 @@ $("document").ready(function() {
 		});
 	});
 	$('body').on('click', '[id^="commentBtn"]', function() {
-		var ckEditorId = $(this).prev().children().attr('id');
+		var ckEditorId = $(this).prev().children().eq(1).attr('id');
 		var postData = {
 				postContent : CKEDITOR.instances[""+ckEditorId].getData(),
 				userId: $(this).attr('userId'),
