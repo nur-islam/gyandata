@@ -45,21 +45,34 @@ public class GyanpediaController extends HttpServlet {
 	}
 
 	protected void doPerform(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String actiion = req.getParameter(Constant.ACTION);
-		LOGGER.info("actiion: " + actiion);
-		if (Constant.METHOD_LOGIN.equalsIgnoreCase(actiion)) {
+		String action = req.getParameter(Constant.ACTION);
+		LOGGER.info("action: " + action);
+		if (Constant.METHOD_LOGIN.equalsIgnoreCase(action)) {
 			performLogin(req, resp);
-		} else if (Constant.METHOD_REGISTER.equalsIgnoreCase(actiion)) {
+		} else if (Constant.METHOD_REGISTER.equalsIgnoreCase(action)) {
+			checkSessionExists(req, resp);
 			performRegister(req, resp);
-		} else if (Constant.METHOD_SHOW_USER.equalsIgnoreCase(actiion)) {
+		} else if (Constant.METHOD_SHOW_USER.equalsIgnoreCase(action)) {
+			checkSessionExists(req, resp);
 			resp.sendRedirect("home.jsp");
-		} else if (Constant.METHOD_POST_CONTENT.equalsIgnoreCase(actiion)) {
+		} else if (Constant.METHOD_POST_CONTENT.equalsIgnoreCase(action)) {
+			checkSessionExists(req, resp);
 			handlePostContent(req, resp);
-		} else if (Constant.METHOD_POST_CONTENT_REPLY.equalsIgnoreCase(actiion)) {
+		} else if (Constant.METHOD_POST_CONTENT_REPLY.equalsIgnoreCase(action)) {
+			checkSessionExists(req, resp);
 			handlePostReply(req, resp);
-		} else if (Constant.METHOD_LOAD_CONTENT.equalsIgnoreCase(actiion)) {
+		} else if (Constant.METHOD_LOAD_CONTENT.equalsIgnoreCase(action)) {
+			checkSessionExists(req, resp);
 			loadContent(req, resp);
 		} else {
+			resp.sendRedirect("index.jsp");
+		}
+	}
+	
+	private void checkSessionExists(HttpServletRequest request, HttpServletResponse resp) throws IOException{
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("authenticatUser");
+		if(user == null){
 			resp.sendRedirect("index.jsp");
 		}
 	}
