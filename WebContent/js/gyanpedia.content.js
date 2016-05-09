@@ -97,8 +97,9 @@ function populateConetnt(resultData){
 			$.each( comment.contentReplies, function( replyIndex, contentReply ){
 				repyData = repyData + '<hr><div style="float: left;" class="user-reply-img">'+
 				'<img width="20" height="20" src="'+comment.createdImage+'">'+
+				'<img width="20" height="20" src="'+contentReply.createdImage+'" alt="'+contentReply.createdBy+'">'+
 				'</div>'+
-				'&nbsp;replyed on '+contentReply.createdOn+'<div class="comment-'+replyIndex+'-reply-'+replyIndex+'">'+contentReply.replyContent+'</div>'+
+				'&nbsp;<b>'+contentReply.createdBy+'</b> replyed on '+contentReply.createdOn+'<div class="comment-'+replyIndex+'-reply-'+replyIndex+'">'+contentReply.replyContent+'</div>'+
 				'';
 				/*'<div class="form-group">'+
 					'<textarea placeholder="Enter your comment.." class="form-control" id="commentArea"'+replyIndex+'"></textarea>'+
@@ -112,7 +113,7 @@ function populateConetnt(resultData){
 		'</ul>'+
 				'<textarea placeholder="Enter your comment..." class="form-control" id="commentArea'+index+'"></textarea>'+
 			'</div>'+
-			'<button  userId="'+comment.userid+'"  contentId="'+comment.contentId+'" type="button" class="btn btn-primary" id="commentBtn1">Post</button>';
+			'<button  userId="'+$('#loggedInUserId').val()+'"  contentId="'+comment.contentId+'" type="button" class="btn btn-primary" id="commentBtn1">Post</button>';
 		//}
 		commentsData = commentsData+repyData+'</form>'+'</div><br>';
 	});

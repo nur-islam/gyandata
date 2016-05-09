@@ -33,6 +33,7 @@
 
 <body class="homepage">
 	<%User user = (User)session.getAttribute("authenticatUser");%>
+	<input type="hidden" id="loggedInUserId" value="<%=user.getUserid() %>">
     <header id="header">
         <div class="top-bar">
             <div class="container">

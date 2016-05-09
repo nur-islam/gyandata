@@ -66,15 +66,17 @@
                     <a class="navbar-brand" href="home.jsp"><img src="logo11.jpg" width="300" height="50"></a>
                 </div>
                 <div class="navbar-header" style="color: red; margin-top: 16px; font-size: 16px; font-weight: bold; margin-left: 30px;">
+   					<%if(session.getAttribute("msg") != null){ %>
    					<%=session.getAttribute("msg") %>
+   					<%} %>
                 </div>
                 <form id="loginForm" method="get" action="./gyanpediacontroller?action=login">
 	                <div class="collapse navbar-collapse navbar-right">
 	                    <ul class="nav navbar-nav">
 	                        <li><input type="text" id="userName" name="userName" size="29" placeholder="  User Name"/></li>
 	                        <li><input type="text" id="password" name="password" size="29" placeholder="  Password"/></li>
-	                        <li><input type="hidden" name="action" value="login"/><a href="" id="login"/>Login</a></li>                       
-	                        <li><a href="Registration.jsp">Sign up</a></li> 
+	                        <li><input type="hidden" name="action" value="login"/><a href="" id="login" class="glyphicon glyphicon-log-in">&nbsp;Login</a></li>                       
+	                        <li><a href="Registration.jsp" class="glyphicon glyphicon-user">&nbsp;Sign up</a></li> 
 						</ul>
 	                </div>
                 </form>

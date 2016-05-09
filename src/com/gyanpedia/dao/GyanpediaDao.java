@@ -38,7 +38,7 @@ public class GyanpediaDao extends BaseDao{
 	
 	private final StringBuffer USER_CONETNT_REPLY_DETAILS = new StringBuffer()
 			.append("Select * from gyanpedia.user_details u, gyanpedia.user_content uc, gyanpedia.user_content_reply ucr ")
-			.append("where u.user_details_id=uc.user_details_id ")
+			.append("where u.user_details_id=ucr.user_details_id ")
 			.append("AND ucr.user_content_id=uc.user_content_id ")
 			.append("AND ucr.user_content_id=? ");
 
