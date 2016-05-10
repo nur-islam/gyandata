@@ -21,6 +21,8 @@ public class User {
 	private String nationality;
 	private String gender;
 	private String image;
+	private int contentCount;
+	private int contentReplyCount;
 	private List<PostContent> postContents;
 	/**
 	 * @return the userid
@@ -243,6 +245,30 @@ public class User {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	/**
+	 * @return the contentCount
+	 */
+	public int getContentCount() {
+		return contentCount;
+	}
+	/**
+	 * @param contentCount the contentCount to set
+	 */
+	public void setContentCount(int contentCount) {
+		this.contentCount = contentCount;
+	}
+	/**
+	 * @return the contentReplyCount
+	 */
+	public int getContentReplyCount() {
+		return contentReplyCount;
+	}
+	/**
+	 * @param contentReplyCount the contentReplyCount to set
+	 */
+	public void setContentReplyCount(int contentReplyCount) {
+		this.contentReplyCount = contentReplyCount;
 	}
 	
 	

@@ -41,6 +41,14 @@ public class GyanpediaDao extends BaseDao{
 			.append("where u.user_details_id=ucr.user_details_id ")
 			.append("AND ucr.user_content_id=uc.user_content_id ")
 			.append("AND ucr.user_content_id=? ");
+	
+	private final StringBuffer USER_CONETNT_REPLY_COUNT = new StringBuffer()
+			.append("SELECT COUNT(user_content_reply_id) AS totalCount ").append("FROM gyanpedia.user_content_reply ucr ")
+			.append("WHERE  ucr.user_details_id=? ");
+	
+	private final StringBuffer USER_CONETNT_COUNT = new StringBuffer()
+			.append("SELECT COUNT(user_content_id) AS totalCount ").append("FROM gyanpedia.user_content ucr ")
+			.append("WHERE  ucr.user_details_id=? ");
 
 	public User getAuthenticatUser(String userName, String password) throws GyanpediaException {
 		User user = new User();
@@ -87,6 +95,61 @@ public class GyanpediaDao extends BaseDao{
 		}
 		LOGGER.info(user.toString());
 		return user;
+	}
+	
+	public int getContentCount(int userId) throws GyanpediaException {
+		int totalCount = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		int placeHolder = 1;
+		try {
+			connection = getConnection();
+			preparedStatement = getPrepardeStattement(connection, USER_CONETNT_COUNT.toString());
+			preparedStatement.setInt(placeHolder++, userId);
+			LOGGER.info(preparedStatement.toString());
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				totalCount = resultSet.getInt("totalCount");		
+			}
+			//user = populateBean(resultSet, User.class);			
+		} catch (GyanpediaException e) {
+			throw new GyanpediaException("Exception occured in getAuthenticatUser" + e);
+		} catch (SQLException e) {
+			throw new GyanpediaException("Exception occured in getAuthenticatUser" + e);
+		} finally {
+			closeResultset(resultSet);
+			closePreparedStatement(preparedStatement);
+			closeConnection(connection);
+		}
+		return totalCount;
+	}
+	
+	public int getContentReplyCount(int userId) throws GyanpediaException {
+		int totalCount = 0;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		int placeHolder = 1;
+		try {
+			connection = getConnection();
+			preparedStatement = getPrepardeStattement(connection, USER_CONETNT_REPLY_COUNT.toString());
+			preparedStatement.setInt(placeHolder++, userId);
+			LOGGER.info(preparedStatement.toString());
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				totalCount = resultSet.getInt("totalCount");		
+			}
+		} catch (GyanpediaException e) {
+			throw new GyanpediaException("Exception occured in getAuthenticatUser" + e);
+		} catch (SQLException e) {
+			throw new GyanpediaException("Exception occured in getAuthenticatUser" + e);
+		} finally {
+			closeResultset(resultSet);
+			closePreparedStatement(preparedStatement);
+			closeConnection(connection);
+		}
+		return totalCount;
 	}
 	
 	public List<PostContent> getContentDetails() throws GyanpediaException {

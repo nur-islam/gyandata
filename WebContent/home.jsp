@@ -102,7 +102,7 @@
 
 									<div class="panel panel-default">
 										<div class="panel-body">
-											<h4><%out.print(user.getName());%>&nbsp;<span class="lead"></span></h4>
+											<h4><%out.print(user.getName());%>&nbsp;<span class="lead">(total posts: <%=user.getContentCount() %>, total replies: <%=user.getContentReplyCount() %>)</span></h4>
 										</div>
 										<div style="text-align: center;" class="panel-thumbnail">
 											<img width="250" height="250" border="2" src="<%= user.getImage()%>">

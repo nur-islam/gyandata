@@ -48,4 +48,16 @@ public class GyanpediaServiceImpl implements IGyanpediaService{
 		
 	}
 
+	@Override
+	public int getContentReplyCount(int userId) throws GyanpediaException {
+		GyanpediaDao dao = new GyanpediaDao();		
+		return dao.getContentReplyCount(userId);
+	}
+
+	@Override
+	public int getContentCount(int userId) throws GyanpediaException {
+		GyanpediaDao dao = new GyanpediaDao();		
+		return dao.getContentCount(userId);
+	}
+
 }

@@ -184,6 +184,8 @@ public class GyanpediaController extends HttpServlet {
 		HttpSession session = req.getSession();
 		try {
 			authenticatUser = service.getAuthenticatUser(userName, password);
+			authenticatUser.setContentCount(service.getContentCount(authenticatUser.getUserid()));
+			authenticatUser.setContentReplyCount(service.getContentReplyCount(authenticatUser.getUserid()));
 			session.setAttribute("authenticatUser", authenticatUser);
 		} catch (GyanpediaException e) {
 			// TODO Auto-generated catch block

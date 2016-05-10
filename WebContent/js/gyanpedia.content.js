@@ -78,7 +78,6 @@ function loadContent(){
 
 function populateConetnt(resultData){
 	var commentsData = '';
-	$('.lead').html('('+resultData.length+' posts)');
 	$.each( resultData, function( index, comment ){
 		commentsData = commentsData+'<div class="well comments-'+index+'">'+
 					'<form class="form">'+

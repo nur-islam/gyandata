@@ -19,4 +19,8 @@ public interface IGyanpediaService {
 	public List<ContentReply> getContentReplyDetails(int contentId) throws GyanpediaException;
 
 	public List<PostContent> getContentDetails() throws GyanpediaException;
+	
+	public int getContentReplyCount(int userId) throws GyanpediaException;
+	
+	public int getContentCount(int userId) throws GyanpediaException;
 }
