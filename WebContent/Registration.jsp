@@ -82,17 +82,12 @@
 
 	<!--/.container--> </nav><!--/nav--> </header>
 	<!--/header-->
-
-
-	<section id="error" class="container text-center">
-	<h1>Registration</h1>
-	</section>
-	<!--/#error-->
-<%if(session.getAttribute("msg") != null) {%>
+	<br>
+<section id="feature" style="padding:0px !important;">
+	<div style="font-size: 19px; font-weight: bold; text-align: center;">Please fill up the below details</div>
+	<%if(session.getAttribute("msg") != null) {%>
 <%=session.getAttribute("msg") %>
 <%} %>
-
-	<section id="feature">
 	<div class="container">
 		<div class="row">
 			<div class="features">
@@ -111,7 +106,7 @@
 							<p>
 								<br /> <label>Password*</label>&nbsp&nbsp&nbsp&nbsp&nbsp <input
 									id="password" type="password" name="password" size="29"
-									placeholder="  password" required />
+									placeholder="  password" required style="margin-left: 4px;"/>
 							</p>
 							<br /> <br />
 							<fieldset class="row2">
@@ -120,43 +115,32 @@
 									<label>Name *
 										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label> <input
 										id="name" type="text" name="name" placeholder="  Full Name"
-										size="29" required />
+										size="29" required style="margin-left: 100px; margin-top: -28px;"/>
 								</p>
 								<p>
 									<label>Phone *
 										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label> <input
 										id="phone" type="text" name="phoneno" size="29"
-										placeholder="  10 digit phone No" required />
+										placeholder="  10 digit phone No" required style="margin-left: 100px; margin-top: -28px;"/>
 								</p>
 								<p>
-									<label class="optional">Street
-										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </label>
-									<input id=street type="text" name="streetname" size="29"
-										placeholder="  Street Name" />
+									<label>Gender *
+										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+									</label> <input id="gender" type="radio" name="gender" value="Male"
+										required /> <label class="gender">Male</label>&nbsp&nbsp&nbsp&nbsp
+									<input type="radio" name="gender" value="Female" /> <label
+										class="gender">Female</label>
 								</p>
 								<p>
-									<label>City *
-										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-									</label> <input id="city" type="text" name="city" size="29"
-										placeholder="  Enter your City" required />
+									<label>Birthdate *</label>
+									&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+									<input type="date" id="birthdate" name="date" size="29"
+										required style="margin-left: 100px; margin-top: -28px;"/>
 								</p>
 								<p>
-									<label>State *
-										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-									</label> <input id="state" type="text" name="state" size="29"
-										placeholder="  Enter your State" required />
-								</p>
-								<p>
-									<label>PinCode *
-										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-									</label> <input id="pincode" type="text" name="pincode" size="29"
-										placeholder="  Enter your PinCode" required />
-								</p>
-								<p>
-									<label>Country *
-										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-									</label> <br />&nbsp&nbsp <SELECT id="country" NAME="country" required>
-										<OPTION SELECTED>- Select Country -
+									<label>Nationality * </label> <SELECT id="nationality"
+										NAME="nationality" style="margin-left: 100px; margin-bottom: 10px; margin-top: -17px;">
+										<OPTION SELECTED>- Select Nationality -
 										<OPTION>Afghanistan
 										<OPTION>Aland Islands
 										<OPTION>Albania
@@ -403,9 +387,17 @@
 										<OPTION>Montenegro
 									</SELECT>
 								</p>
-								<label>Role *
+								
+								
+					</div>
+					<div>
+					<fieldset>
+						<legend>
+								<br />Professional Details
+							</legend>
+						<label>Role *
 									&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-								</label> <br />&nbsp&nbsp <SELECT id="role" NAME="Role" required>
+								</label>&nbsp&nbsp <SELECT id="role" NAME="Role" required style="margin-left: 100px; margin-top: -22px; margin-bottom: 10px;">
 									<OPTION SELECTED>- Select Your Role -
 									<OPTION>Teacher
 									<OPTION>Student
@@ -416,12 +408,12 @@
 										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 									</label> <input id="organization" type="text" name="organization"
 										size="29" placeholder="  Enter your Organization name"
-										required />
+										required style="margin-left: 100px; margin-top: -28px;"/>
 								</p>
 								<p>
 									<label>Stream *
 										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-									</label> <br />&nbsp&nbsp <SELECT id="stream" NAME="stream" required>
+									</label> &nbsp&nbsp <SELECT id="stream" NAME="stream" required style="margin-left: 100px; margin-top: -23px;">
 										<OPTION SELECTED>- Select Stream -
 										<OPTION>C.S.E
 										<OPTION>E.C.E
@@ -434,10 +426,11 @@
 										<OPTION>E.E.E
 									</SELECT>
 								</p>
-					</div>
+					</fieldset>
+				</div>
+				
 				</div>
 				<!--/.col-md-4-->
-
 				<div class="col-md-4 col-sm-6 wow fadeInDown"
 					data-wow-duration="1000ms" data-wow-delay="600ms">
 					<div class="feature-wrap">
@@ -458,25 +451,36 @@
 
 							<br /> <br />
 							<fieldset class="row3">
-								<legend>Further Information </legend>
+								<legend>Contact Information </legend>
 								<p>
-									<label>Gender *
-										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-									</label> <input id="gender" type="radio" name="gender" value="Male"
-										required /> <label class="gender">Male</label>&nbsp&nbsp&nbsp&nbsp
-									<input type="radio" name="gender" value="Female" /> <label
-										class="gender">Female</label>
+									<label class="optional">Street
+										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </label>
+									<input id=street type="text" name="streetname" size="29"
+										placeholder="  Street Name" />
 								</p>
 								<p>
-									<label>Birthdate *</label>
-									&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-									<input type="date" id="birthdate" name="date" size="29"
-										required />
+									<label>City *
+										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+									</label> <input id="city" type="text" name="city" size="29"
+										placeholder="  Enter your City" required />
 								</p>
 								<p>
-									<label>Nationality * </label> <SELECT id="nationality"
-										NAME="nationality">
-										<OPTION SELECTED>- Select Nationality -
+									<label>State *
+										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+									</label> <input id="state" type="text" name="state" size="29"
+										placeholder="  Enter your State" required style="margin-left: 100px; margin-top: -28px;"/>
+								</p>
+								<p>
+									<label>PinCode *
+										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+									</label> <input id="pincode" type="text" name="pincode" size="29"
+										placeholder="  Enter your PinCode" required style="margin-left: 100px; margin-top: -28px;"/>
+								</p>
+								<p>
+									<label>Country *
+										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+									</label> &nbsp&nbsp <SELECT id="country" NAME="country" required style="margin-left: 100px; margin-top: -17px;">
+										<OPTION SELECTED>- Select Country -
 										<OPTION>Afghanistan
 										<OPTION>Aland Islands
 										<OPTION>Albania
@@ -725,8 +729,8 @@
 								</p>
 
 								<br /> <br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-								<td><input type="hidden" name="action" value="register" /><a
-									href="" id="register" />Submit </a></td>
+								<td><input type="hidden" name="action" value="register" /><button
+									href="" id="register" class="glyphicon glyphicon-ok  btn btn-primary">&nbsp;Submit </button></td>
 					</div>
 				</div>
 				<!--/.col-md-4-->
@@ -750,34 +754,7 @@
 							<h3>
 
 
-								<script>
-									function PreviewImage() {
-										var oFReader = new FileReader();
-										oFReader
-												.readAsDataURL(document
-														.getElementById("uploadImage").files[0]);
-										oFReader.onload = function(oFREvent) {
-											var sizef = document
-													.getElementById('uploadImage').files[0].size;
-											document
-													.getElementById("uploadPreview").src = oFREvent.target.result;
-											document
-													.getElementById("uploadImageValue").value = oFREvent.target.result;
-										};
-									};
-									jQuery(document)
-											.ready(
-													function() {
-														$('#viewSource')
-																.click(
-																		function() {
-																			var imgUrl = $(
-																					'#uploadImageValue')
-																					.val();
-																			alert(imgUrl);
-																		});
-													});
-								</script>
+								
 					</div>
 					<!--/.col-md-4-->
 

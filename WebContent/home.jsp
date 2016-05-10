@@ -114,6 +114,7 @@
 									<div class="panel panel-default">
 										<div class="panel-heading">
 											<h4>About</h4>
+											<span class="glyphicon glyphicon-edit edit-profile" style="float: right; margin-top: -33px;">&nbsp;Edit</span>
 										</div>
 										<div class="panel-body">
 											<div class="list-group">

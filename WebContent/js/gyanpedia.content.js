@@ -9,6 +9,10 @@ $("document").ready(function() {
            OK: function() {$(this).dialog("close");}
         },
      });
+	
+	$('body').on('click', '.edit-profile', function(){
+		
+	});
      	
 	$('body').on('click', '.upload-comment-file', function(e) {
 		e.preventDefault();
