@@ -122,7 +122,7 @@
 								<p>
 									<label>Phone *
 										&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label> <input
-										id="phone" type="text" name="phoneno" size="29"
+										id="phone" type="text" name="phone" size="29"
 										placeholder="  10 digit phone No" required style="margin-left: 100px; margin-top: -28px;"/>
 								</p>
 								<p>
