@@ -136,7 +136,7 @@
 								<p>
 									<label>Birthdate *</label>
 									&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-									<input type="date" id="birthdate" name="date" size="29"
+									<input type="date" id="birthdate" name="birthdate" size="29"
 										required style="margin-left: 100px; margin-top: -28px;"/>
 								</p>
 								<p>

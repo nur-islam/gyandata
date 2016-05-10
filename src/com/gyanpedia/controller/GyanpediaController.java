@@ -119,7 +119,7 @@ public class GyanpediaController extends HttpServlet {
 			user.setStream(req.getParameter("stream"));
 			user.setNationality(req.getParameter("nationality"));
 			user.setGender(req.getParameter("gender"));
-			user.setImage(req.getParameter("userImage"));
+			user.setImage(req.getParameter("uploadImageValue"));
 			String date = req.getParameter("birthdate");
 
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
