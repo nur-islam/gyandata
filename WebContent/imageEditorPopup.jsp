@@ -36,10 +36,10 @@ $("document").ready(function() {
 <body>
 	<%
 		String uploadData = (String) request.getAttribute("uploadData");
-	%>
-	<%
 		String editorId = (String) request.getAttribute("editorId");
+		String msg = (String) request.getAttribute("msg");
 	%>
+	
 	<%
 		if (uploadData != null && uploadData.length() > 0) {
 	%>
@@ -53,6 +53,9 @@ $("document").ready(function() {
 	%>
 	<form action="uploaddownloadcontroller" method="post"
 		enctype="multipart/form-data">
+		<% if (msg != null && msg.length() > 0) { %>
+			<span style="color:red;font-weight:bold;"><%=msg %></span><br><br>
+		<%} %>
 		Select File to Upload:<input type="file" name="fileName"> <br>
 		<input type="hidden" name="action" value="uploadFile"> <input
 			type="submit" value="Upload">

@@ -90,7 +90,10 @@
 	<%} %>
 <form action="gyanpediacontroller" method="post" id="registerForm">
 <input type="hidden" name="action" value="register">
+<<<<<<< Upstream, based on origin/master
 >>>>>>> 151cbc6 Changed for register 
+=======
+>>>>>>> 4c6c22b Changed for register 
 	<div class="container">
 		<div class="row">
 			<div class="features">

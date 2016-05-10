@@ -113,6 +113,7 @@ public class UploadDownloadFileServlet extends HttpServlet {
 			while(fileItemsIterator.hasNext()){
 				FileItem fileItem = fileItemsIterator.next();
 				String fileNewName = System.currentTimeMillis()+getFileExtention(fileItem);
+				String editorId = getOtherData(fileItemsList, "editorId");
 				if(fileItem.getName() == null || fileItem.getName().length() == 0){
 					continue;
 				}
@@ -120,19 +121,21 @@ public class UploadDownloadFileServlet extends HttpServlet {
 				System.out.println("FileName="+fileItem.getName());
 				System.out.println("ContentType="+fileItem.getContentType());
 				System.out.println("Size in bytes="+fileItem.getSize());
-
-				File file = new File(Constant.FILE_UPLOAD_LOCATION+File.separator+fileNewName);
-				System.out.println("Absolute Path at server="+file.getAbsolutePath());
-				fileItem.write(file);
-				request.setAttribute("uploadData", "<a id=\"download-link\" href=\"uploaddownloadcontroller?action=downloadFile&fileName="+fileNewName+"\">Download "+fileItem.getName()+"</a>");
-				request.setAttribute("editorId",getOtherData(fileItemsList, "editorId"));
-				/*out.write("File "+fileItem.getName()+ " uploaded successfully.");
-				out.write("<br>");*/
-				if(fileItem.getContentType().contains("image")){
-					request.setAttribute("uploadData", "<img src=\"upload/"+file.getName()+"\">");
+				if(editorId.equalsIgnoreCase("register") && !fileItem.getContentType().contains("image")){
+					request.setAttribute("uploadData", "");
+					request.setAttribute("msg", "Image is only supported file. Please try to upload image only!!");
 				} else {
-					request.setAttribute("uploadData", "<a id=\"download-link\" href=\"uploaddownloadcontroller?action=downloadFile&fileName="+fileNewName+"\">Download "+fileItem.getName()+"</a>");
-				}
+					File file = new File(Constant.FILE_UPLOAD_LOCATION+File.separator+fileNewName);
+					System.out.println("Absolute Path at server="+file.getAbsolutePath());
+					fileItem.write(file);
+					request.setAttribute("uploadData", "<a class=\"glyphicon glyphicon-download-alt\" id=\"download-link\" href=\"uploaddownloadcontroller?action=downloadFile&fileName="+fileNewName+"\">&nbsp;"+fileItem.getName()+"</a>");
+					request.setAttribute("editorId",editorId);
+					if(fileItem.getContentType().contains("image")){
+						request.setAttribute("uploadData", "<img src=\"upload/"+file.getName()+"\">");
+					} else {
+						request.setAttribute("uploadData", "<a  class=\"glyphicon glyphicon-download-alt\" id=\"download-link\" href=\"uploaddownloadcontroller?action=downloadFile&fileName="+fileNewName+"\">&nbsp;"+fileItem.getName()+"</a>");
+					}
+				}				
 				request.getRequestDispatcher("imageEditorPopup.jsp").forward(request, response);
 				//response.sendRedirect("imageEditorPopup.jsp");
 			}
