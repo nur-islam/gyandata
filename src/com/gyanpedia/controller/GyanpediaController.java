@@ -134,7 +134,7 @@ public class GyanpediaController extends HttpServlet {
 			User existingUser = service.getAuthenticatUser(user.getEmail(), user.getPassword());
 			if (existingUser.getUserid() > 0) {
 				req.setAttribute("msg", "User Already Exists");
-				resp.sendRedirect("Registration.jsp");
+				req.getRequestDispatcher("Registration.jsp").forward(req, resp);
 			} else {
 				isSuccess = service.saveUser(user);
 				if (isSuccess) {
@@ -147,7 +147,8 @@ public class GyanpediaController extends HttpServlet {
 				}
 			}
 		} catch (Exception e1) {
-			req.setAttribute("msg", "Profile creation fail due to error: " + e1.getMessage());
+			e1.printStackTrace();
+			req.setAttribute("msg", "Profile creation fail due to error: " + e1.toString());
 			req.getRequestDispatcher("Registration.jsp").forward(req, resp);
 		}
 	}
