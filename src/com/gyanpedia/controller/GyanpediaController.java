@@ -101,60 +101,55 @@ public class GyanpediaController extends HttpServlet {
 		}
 	}
 
-	private void performRegister(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void performRegister(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
 		User user = new User();
-		user.setName(req.getParameter("name"));
-		user.setOrganization(req.getParameter("organisation"));
-		user.setPassword(req.getParameter("password"));
-		user.setRole(req.getParameter("role"));
-		//user.setUserid(Integer.valueOf(req.getParameter("user_details_id")));
-		user.setPhone(Integer.valueOf(req.getParameter("phone")));
-		user.setStreet(req.getParameter("street"));
-		user.setCity(req.getParameter("city"));
-		user.setState(req.getParameter("state"));
-		user.setPincode(Integer.valueOf(req.getParameter("pincode")));
-		user.setEmail(req.getParameter("email"));
-		user.setCountry(req.getParameter("country"));
-		user.setStream(req.getParameter("stream"));
-		user.setNationality(req.getParameter("nationality"));
-		user.setGender(req.getParameter("gender"));
-		user.setImage(req.getParameter("userImage"));
-		String date = req.getParameter("birthdate");		
+		try {
+			user.setName(req.getParameter("name"));
+			user.setOrganization(req.getParameter("organisation"));
+			user.setPassword(req.getParameter("password"));
+			user.setRole(req.getParameter("role"));
+			user.setPhone(Integer.valueOf(req.getParameter("phone")));
+			user.setStreet(req.getParameter("street"));
+			user.setCity(req.getParameter("city"));
+			user.setState(req.getParameter("state"));
+			user.setPincode(Integer.valueOf(req.getParameter("pincode")));
+			user.setEmail(req.getParameter("email"));
+			user.setCountry(req.getParameter("country"));
+			user.setStream(req.getParameter("stream"));
+			user.setNationality(req.getParameter("nationality"));
+			user.setGender(req.getParameter("gender"));
+			user.setImage(req.getParameter("userImage"));
+			String date = req.getParameter("birthdate");
 
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-		Date parse = null;
-		try {
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+			Date parse = null;
 			parse = dateFormat.parse(date);
-		} catch (ParseException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-		java.sql.Date birthDate = new java.sql.Date(parse.getTime());
-		user.setBirthDate(birthDate);
-		IGyanpediaService service = new GyanpediaServiceImpl();
-		HttpSession session = req.getSession();
-		boolean isSuccess = false;
-		try {
+			java.sql.Date birthDate = new java.sql.Date(parse.getTime());
+			user.setBirthDate(birthDate);
+			IGyanpediaService service = new GyanpediaServiceImpl();
+			HttpSession session = req.getSession();
+			boolean isSuccess = false;
+
 			User existingUser = service.getAuthenticatUser(user.getEmail(), user.getPassword());
 			if (existingUser.getUserid() > 0) {
-				session.setAttribute("msg", "User Already Exists");
+				req.setAttribute("msg", "User Already Exists");
 				resp.sendRedirect("Registration.jsp");
 			} else {
 				isSuccess = service.saveUser(user);
 				if (isSuccess) {
 					User userDetails = service.getAuthenticatUser(user.getEmail(), user.getPassword());
 					session.setAttribute("authenticatUser", userDetails);
-					resp.sendRedirect("home.jsp");
+					req.getRequestDispatcher("home.jsp").forward(req, resp);
 				} else {
-					resp.sendRedirect("Registration.jsp");
+					req.setAttribute("msg", "Profile creation fail");
+					req.getRequestDispatcher("Registration.jsp").forward(req, resp);
 				}
 			}
-		} catch (GyanpediaException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			req.setAttribute("msg", "Profile creation fail due to error: " + e1.getMessage());
+			req.getRequestDispatcher("Registration.jsp").forward(req, resp);
 		}
-
-		System.out.println(isSuccess);
 	}
 	
 	private void loadContent(HttpServletRequest req, HttpServletResponse response) throws IOException{

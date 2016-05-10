@@ -86,8 +86,11 @@
 <section id="feature" style="padding:0px !important;">
 	<div style="font-size: 19px; font-weight: bold; text-align: center;">Please fill up the below details</div>
 	<%if(session.getAttribute("msg") != null) {%>
-<%=session.getAttribute("msg") %>
-<%} %>
+		<%=session.getAttribute("msg") %>
+	<%} %>
+<form action="gyanpediacontroller" method="post" id="registerForm">
+<input type="hidden" name="action" value="register">
+>>>>>>> 151cbc6 Changed for register 
 	<div class="container">
 		<div class="row">
 			<div class="features">

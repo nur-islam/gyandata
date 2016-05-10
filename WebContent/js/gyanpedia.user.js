@@ -14,7 +14,7 @@ $("document").ready(function() {
 	});
 	
 	$("body").on("click", "#register", function(event) {
-		event.preventDefault();
+		/*event.preventDefault();
 		var postData = {
 			name :$('#name').val(),
 			role :$('#role').val(),
@@ -36,7 +36,8 @@ $("document").ready(function() {
 		};
 		$.post('./gyanpediacontroller?action=register', postData, function(data, status){
 			
-		});
+		});*/
+		$('#registerForm').submit();
 	});
 	
 	$('body').on('click', '.upload-comment-file', function(e) {
